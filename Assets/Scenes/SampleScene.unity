@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 1715735580}
   - component: {fileID: 1715735579}
   - component: {fileID: 1715735586}
-  - component: {fileID: 1715735583}
+  - component: {fileID: 1715735587}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   moveView: {fileID: 1715735579}
   moveData: {fileID: 1715735581}
   moveHandler: {fileID: 1715735580}
-  lazerHandler: {fileID: 1715735583}
+  lazerHandler: {fileID: 0}
   laserRenderer: {fileID: 1834574548}
   isShooting: 1
 --- !u!114 &1715735577
@@ -1109,22 +1109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveHandler: {fileID: 1715735580}
---- !u!114 &1715735583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1715735567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c309f7cc6703d349a8f33d2ecb15263, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveHandler: {fileID: 1715735580}
-  laserRenderer: {fileID: 1834574548}
-  playerCollider: {fileID: 1888340126}
-  shootingStatus: 0
 --- !u!114 &1715735586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,7 +1121,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b551b9c899c64439c73c47d013d610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lazerHandler: {fileID: 1715735583}
+  lazerHandler: {fileID: 0}
+--- !u!114 &1715735587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715735567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c309f7cc6703d349a8f33d2ecb15263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveHandler: {fileID: 0}
+  laserRenderer: {fileID: 0}
+  playerCollider: {fileID: 0}
+  bossCollider: {fileID: 0}
+  bossMask:
+    serializedVersion: 2
+    m_Bits: 0
+  shootingStatus: 0
+  checkHit: 0
 --- !u!1 &1778806428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1627,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df7d0836153dfb745a499016c3508e22, type: 2}
+  - {fileID: 2100000, guid: 3b09a270aa2ba00479170b238fb38c37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1718,7 +1723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectData: {fileID: 1834574556}
-  lazerHandler: {fileID: 1715735583}
+  lazerHandler: {fileID: 0}
   textures:
   - {fileID: 2800000, guid: f204f48893b4ad54982076043dcd6c57, type: 3}
   - {fileID: 2800000, guid: cc4e038d15a86cc46b2061377c260424, type: 3}
