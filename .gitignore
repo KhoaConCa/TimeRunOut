@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.vsconfig
+/Assembly-CSharp-Editor.csproj
+/Assembly-CSharp.csproj
+/Library
+/Logs
+/obj
+/Sirenix.OdinInspector.Modules.UnityMathematics.csproj
+/Temp
+/TimeRunOut.sln
+/UserSettings
+/Wooshii.HierarchyDecorator.csproj
+/Wooshii.HierarchyDecorator.Editor.csproj
