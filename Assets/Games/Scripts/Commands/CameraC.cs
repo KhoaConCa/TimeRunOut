@@ -11,7 +11,13 @@ public class CameraC : MonoBehaviour
         {
             switch (triggerType)
             {
-                case "AutoMove":
+                case "FollowPlayer":
+                    cameraHandler.TriggerFollowPlayer();
+                    break;
+                case "StopForBoss":
+                    cameraHandler.TriggerStopForBoss();
+                    break;
+/*              case "AutoMove":
                     cameraHandler.TriggerAutoMove();
                     break;
                 case "SpeedRun":
@@ -19,10 +25,7 @@ public class CameraC : MonoBehaviour
                     break;
                 case "SlowMotion":
                     cameraHandler.TriggerSlowMotion();
-                    break;
-                case "StopForBoss":
-                    cameraHandler.TriggerStopForBoss();
-                    break;
+                    break;*/
             }
         }
     }
