@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossStats : ICharacterStats
+public class BossStats : MonoBehaviour, ICharacterStats
 {
     #region Fields
-    public int HP = 540;
+    public int HP = 150000;
     public int ATK = 1;
     #endregion
 

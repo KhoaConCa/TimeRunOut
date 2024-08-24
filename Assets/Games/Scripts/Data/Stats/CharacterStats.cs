@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : ICharacterStats
+public class CharacterStats : MonoBehaviour, ICharacterStats
 {
     #region Fields
     public int HP = 6;
