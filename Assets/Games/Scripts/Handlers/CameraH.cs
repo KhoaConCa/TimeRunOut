@@ -1,25 +1,26 @@
-﻿using UnityEngine;
+﻿#region Test
+/*using UnityEngine;
 
 public class CameraH : MonoBehaviour
 {
     #region Fields
     public Transform player;
     public float followSpeed = 5f;
-/*    public float autoMoveSpeed = 5f;
+*//*    public float autoMoveSpeed = 5f;
     public float speedRunMultiplier = 2f;
-    public float slowMotionMultiplier = 0.5f;*/
+    public float slowMotionMultiplier = 0.5f;*//*
 
     private enum CameraState { FollowPlayer, StopForBoss } //AutoMove, SpeedRun, SlowMotion, StopForBoss }
     private CameraState currentState;
-/*
+*//*
     public float[] triggerPoints = new float[] { 0f, 10f, 30f, 50f, 70f, 90f, 120f, 150f, 180f, 210f, 240f };
-    private int currentTriggerIndex = 0;*/
+    private int currentTriggerIndex = 0;*//*
     #endregion
 
     #region Methods
     private void Update()
     {
-/*        CheckForTriggerPoints();*/
+*//*        CheckForTriggerPoints();*//*
 
         switch (currentState)
         {
@@ -28,7 +29,7 @@ public class CameraH : MonoBehaviour
                 break;
             case CameraState.StopForBoss:
                 break;
-/*          case CameraState.AutoMove:
+*//*          case CameraState.AutoMove:
                 AutoMove();
                 break;
             case CameraState.SpeedRun:
@@ -36,11 +37,11 @@ public class CameraH : MonoBehaviour
                 break;
             case CameraState.SlowMotion:
                 AutoMove(slowMotionMultiplier);
-                break;*/
+                break;*//*
         }
     }
 
-/*    private void CheckForTriggerPoints()
+*//*    private void CheckForTriggerPoints()
     {
         if (currentTriggerIndex < triggerPoints.Length && player.position.x >= triggerPoints[currentTriggerIndex])
         {
@@ -82,7 +83,7 @@ public class CameraH : MonoBehaviour
             }
             currentTriggerIndex++;
         }
-    }*/
+    }*//*
 
     private void FollowPlayer()
     {
@@ -90,14 +91,22 @@ public class CameraH : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
     }
 
-    /*    private void AutoMove(float speedMultiplier = 1f)
+    *//*    private void AutoMove(float speedMultiplier = 1f)
         {
             transform.Translate(Vector3.right * autoMoveSpeed * speedMultiplier * Time.deltaTime);
-        }*/
+        }*//*
     public void TriggerFollowPlayer() => currentState = CameraState.FollowPlayer;
     public void TriggerStopForBoss() => currentState = CameraState.StopForBoss;
-    /*    public void TriggerAutoMove() => currentState = CameraState.AutoMove;
+    *//*    public void TriggerAutoMove() => currentState = CameraState.AutoMove;
         public void TriggerSpeedRun() => currentState = CameraState.SpeedRun;
-        public void TriggerSlowMotion() => currentState = CameraState.SlowMotion;*/
+        public void TriggerSlowMotion() => currentState = CameraState.SlowMotion;*//*
     #endregion
+}*/
+#endregion
+
+using UnityEngine;
+public class CameraH : MonoBehaviour
+{
+
 }
+

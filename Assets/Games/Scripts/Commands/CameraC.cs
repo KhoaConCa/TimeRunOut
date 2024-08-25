@@ -1,4 +1,5 @@
-using UnityEngine;
+#region Test
+/*using UnityEngine;
 
 public class CameraC : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class CameraC : MonoBehaviour
                 case "StopForBoss":
                     cameraHandler.TriggerStopForBoss();
                     break;
-/*              case "AutoMove":
+*//*              case "AutoMove":
                     cameraHandler.TriggerAutoMove();
                     break;
                 case "SpeedRun":
@@ -25,8 +26,29 @@ public class CameraC : MonoBehaviour
                     break;
                 case "SlowMotion":
                     cameraHandler.TriggerSlowMotion();
-                    break;*/
+                    break;*//*
             }
         }
+    }
+}*/
+#endregion
+
+using UnityEngine;
+
+public class CameraC : MonoBehaviour
+{
+    [SerializeField] private Transform player;
+    [Range(0, 1)] public float smooth;
+
+    public Vector2 xLim;
+    public Vector2 yLim;
+    Vector3 velocity = Vector3.zero;
+    public Vector3 positionDefault;
+
+    void LateUpdate()
+    {
+        Vector3 targetPosition = player.position + positionDefault;
+        targetPosition = new Vector3(Mathf.Clamp(targetPosition.x, xLim.x, xLim.y), Mathf.Clamp(targetPosition.y, yLim.x, yLim.y), -10);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smooth);
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ShootH : MonoBehaviour
 {
@@ -75,6 +76,25 @@ public class ShootH : MonoBehaviour
             Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
             body.AddForce(-direction * shootData.thrust, ForceMode2D.Impulse);
         }
+    }
+
+    public void StopShoot()
+    {
+        StartCoroutine(StopAndResume());
+    }
+
+    private IEnumerator StopAndResume()
+    {
+        Vector2 originalVelocity = body.velocity;
+        float originalAngularVelocity = body.angularVelocity;
+
+        body.velocity = Vector2.zero;
+        body.angularVelocity = 0f;
+
+        yield return new WaitForSeconds(0.5f);
+
+        body.velocity = originalVelocity;
+        body.angularVelocity = originalAngularVelocity;
     }
     #endregion
 

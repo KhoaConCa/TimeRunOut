@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class MoveH : MonoBehaviour
@@ -9,11 +11,28 @@ public class MoveH : MonoBehaviour
     [SerializeField] private CapsuleCollider2D groundCheck;
     [SerializeField] public LayerMask groundMask;
     [SerializeField] private Animator animator;
+    [SerializeField] private ShootH shootHandler;
+    [SerializeField] private CameraH cameraHandler;
 
+/*    public CameraV cameraView;
+    public ParticleV particleView;*/
     public bool grounded;
+    private Vector2 startPosition;
     #endregion
 
     #region Methods
+    void Start()
+    {
+        startPosition = transform.position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Obstacle"))
+        {
+            Die();
+        }
+    }
     void FixedUpdate()
     {
         CheckGround(); ;
@@ -66,6 +85,27 @@ public class MoveH : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+    }
+    #endregion
+
+    #region Die & Respawn
+    private void Die()
+    {
+/*        cameraView.PlayRespawnAnimation();
+        particleView.PlayParticle(ParticleV.Particles.die, transform.position);*/
+        StartCoroutine(Respawn(0.5f));
+    }
+
+    IEnumerator Respawn(float duration)
+    {
+        body.simulated = false;
+        body.velocity = new Vector2(0, 0);
+        transform.localScale = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(duration);
+        transform.position = startPosition;
+        shootHandler.StopShoot();
+        transform.localScale = new Vector3(1, 1, 1);
+        body.simulated = true;
     }
     #endregion
 
