@@ -6,34 +6,34 @@ using UnityEngine;
 public class MoveH : MonoBehaviour
 {
     #region Fields
-    [SerializeField] private MoveD moveData;
-    [SerializeField] private Rigidbody2D body;
+    [SerializeField] public MoveD moveData;
+    [SerializeField] public Rigidbody2D body;
     [SerializeField] private CapsuleCollider2D groundCheck;
     [SerializeField] public LayerMask groundMask;
     [SerializeField] private Animator animator;
     [SerializeField] private ShootH shootHandler;
-    [SerializeField] private CameraH cameraHandler;
+    //[SerializeField] private CameraH cameraHandler;
 
 /*    public CameraV cameraView;
     public ParticleV particleView;*/
     public bool grounded;
-    private Vector2 startPosition;
+/*    private Vector2 checkPoint;*/
     #endregion
 
     #region Methods
-    void Start()
+/*    void Start()
     {
-        startPosition = transform.position;
-    }
+        checkPoint = transform.position;
+    }*/
 
-    private void OnTriggerEnter2D(Collider2D collision)
+/*    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Obstacle"))
         {
             Die();
         }
-    }
-    void FixedUpdate()
+    }*/
+/*    void FixedUpdate()
     {
         CheckGround(); ;
 
@@ -41,9 +41,9 @@ public class MoveH : MonoBehaviour
         {
             body.velocity *= moveData.drag;
         }
-    }
+    }*/
     #region Constraints
-    private void CheckGround()
+    public void CheckGround()
     {
         Collider2D collider = Physics2D.OverlapBox(groundCheck.bounds.center, groundCheck.bounds.size, 0, groundMask);
         grounded = collider != null;
@@ -75,7 +75,7 @@ public class MoveH : MonoBehaviour
         }
     }
 
-    private void FlipCharacter(float x)
+    public void FlipCharacter(float x)
     {
         if (x > 0)
         {
@@ -88,12 +88,17 @@ public class MoveH : MonoBehaviour
     }
     #endregion
 
-    #region Die & Respawn
+ /*   #region Die, Respawn, Check Point
     private void Die()
     {
-/*        cameraView.PlayRespawnAnimation();
-        particleView.PlayParticle(ParticleV.Particles.die, transform.position);*/
+*//*        cameraView.PlayRespawnAnimation();
+        particleView.PlayParticle(ParticleV.Particles.die, transform.position);*//*
         StartCoroutine(Respawn(0.5f));
+    }
+
+    public void UpdateCheckPoint(Vector2 position)
+    {
+        checkPoint = position;
     }
 
     IEnumerator Respawn(float duration)
@@ -102,12 +107,12 @@ public class MoveH : MonoBehaviour
         body.velocity = new Vector2(0, 0);
         transform.localScale = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(duration);
-        transform.position = startPosition;
+        transform.position = checkPoint;
         shootHandler.StopShoot();
         transform.localScale = new Vector3(1, 1, 1);
         body.simulated = true;
     }
-    #endregion
+    #endregion*/
 
     #endregion
 }

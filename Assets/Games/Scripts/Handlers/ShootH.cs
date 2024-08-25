@@ -5,7 +5,7 @@ public class ShootH : MonoBehaviour
 {
     #region Fields
     [SerializeField] private Rigidbody2D body;
-    [SerializeField] private ShootD shootData;
+    [SerializeField] public ShootD shootData;
     [SerializeField] private MoveV moveView;
     [SerializeField] private MoveD moveData;
     [SerializeField] private MoveH moveHandler;
@@ -13,33 +13,13 @@ public class ShootH : MonoBehaviour
     [SerializeField] private LineRenderer laserRenderer;
 
     public bool isShooting;
-    private bool hasReachedMaxAltitude;
+    public bool hasReachedMaxAltitude;
     #endregion
 
     #region Methods
-    void Update()
-    {
-        LimitVelocity();
-        FlipWhenShooting();
-
-        if (isShooting)
-        {
-            Shoot();
-            lazerHandler.EnableLazer();
-        }
-        else
-        {
-            lazerHandler.DisableLazer();
-        }
-
-        if (transform.position.y < shootData.maxAltitude)
-        {
-            hasReachedMaxAltitude = false;
-        }
-    }
 
     #region Constraints
-    void LimitVelocity()
+    public void LimitVelocity()
     {
         if (body.velocity.magnitude > shootData.maxVelocity && isShooting)
         {
@@ -48,7 +28,7 @@ public class ShootH : MonoBehaviour
         }
     }
 
-    void FlipWhenShooting()
+    public void FlipWhenShooting()
     {
         Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
 

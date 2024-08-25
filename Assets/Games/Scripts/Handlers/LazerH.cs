@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 
 public class LazerH : MonoBehaviour
 {
@@ -18,18 +15,7 @@ public class LazerH : MonoBehaviour
     #endregion
 
     #region Methods
-    void Update()
-    {
-        switch (shootingStatus)
-        {
-            case true:
-                EnableLazer();
-                break;
-            case false:
-                DisableLazer();
-                break;
-        }
-    }
+
     #region Get Collider
     private Vector2 GetColliderCharacter()
     {

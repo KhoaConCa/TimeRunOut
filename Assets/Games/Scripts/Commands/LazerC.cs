@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LazerC : MonoBehaviour
@@ -29,6 +27,16 @@ public class LazerC : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             lazerHandler.shootingStatus = false;
+        }
+
+        switch (lazerHandler.shootingStatus)
+        {
+            case true:
+                lazerHandler.EnableLazer();
+                break;
+            case false:
+                lazerHandler.DisableLazer();
+                break;
         }
     }
     #endregion

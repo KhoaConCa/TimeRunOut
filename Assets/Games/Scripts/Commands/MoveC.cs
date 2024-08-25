@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Unity.VisualScripting;
 
 public class MoveC : MonoBehaviour
 {
@@ -20,6 +17,16 @@ public class MoveC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             moveHandler.Jump();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        moveHandler.CheckGround(); ;
+
+        if (moveHandler.grounded && Mathf.Abs(moveHandler.body.velocity.x) < 0.1)
+        {
+            moveHandler.body.velocity *= moveHandler.moveData.drag;
         }
     }
     #endregion
