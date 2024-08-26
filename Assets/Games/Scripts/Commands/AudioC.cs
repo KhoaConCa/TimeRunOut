@@ -1,0 +1,39 @@
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
+
+public class AudioC : MonoBehaviour
+{
+    #region Fields
+    /*    [SerializeField] private AudioSource musicSource;
+        [SerializeField] public AudioSource SFXsource;
+
+        public AudioClip background;
+        public AudioClip death;
+        public AudioClip checkpoint;
+        public AudioClip wallTouch;
+        public AudioClip portalIn;
+        public AudioClip portalOut;*/
+    [SerializeField] public AudioMixer mixer;
+    [SerializeField] public Slider musicSlider;
+    [SerializeField] public Slider SFXSlider;
+    [SerializeField] public AudioH audioHandler;
+    #endregion
+
+    #region Methods
+    private void Start()
+    {
+        /*musicSource.clip = background;
+        musicSource.Play();*/
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            audioHandler.LoadVolume();
+        }
+        else
+        {
+            audioHandler.SetMusicVolume();
+            audioHandler.SetSFXVolume();
+        }
+    }
+    #endregion
+}
