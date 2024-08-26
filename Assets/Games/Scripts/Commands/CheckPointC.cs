@@ -6,14 +6,19 @@ public class CheckPointC : MonoBehaviour
 {
     #region Fields
     [SerializeField] private RespawnH respawnHandler;
+
+    //private SpriteRenderer spriteRenderer;
+    public Transform respawnPoint;
+    //private Sprite passive, active;
     #endregion
 
     #region Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Checkpoint"))
         {
-            respawnHandler.UpdateCheckPoint(transform.position);
+            respawnHandler.UpdateCheckPoint(respawnPoint.position);
+            //spriteRenderer.sprite = active;
         }
     }
     #endregion

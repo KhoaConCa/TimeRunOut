@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class CheckpointH : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region Fields
+    [SerializeField] private RespawnH respawnHandler;
+    #endregion
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #region Methods
+
+    #endregion
 }
