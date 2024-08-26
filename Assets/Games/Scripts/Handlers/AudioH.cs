@@ -17,7 +17,7 @@ public class AudioH : MonoBehaviour
     public void SetMusicVolume()
     {
         float volume = audioCommand.musicSlider.value;
-        audioCommand.mixer.SetFloat("music",  Mathf.Log10(volume) * 20);
+        audioCommand.mixer.SetFloat("music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
 
@@ -27,13 +27,14 @@ public class AudioH : MonoBehaviour
         audioCommand.SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 
         SetMusicVolume();
+        SetSFXVolume();
     }
     #endregion
 
     #region SFX
     public void SetSFXVolume()
     {
-        float volume = audioCommand.musicSlider.value;
+        float volume = audioCommand.SFXSlider.value;
         audioCommand.mixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("SFXVolume", volume);
     }
