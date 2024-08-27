@@ -31,5 +31,11 @@ public class PauseH : MonoBehaviour
         Time.timeScale = 1f; // Đảm bảo thời gian trở lại bình thường trước khi restart
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Tải lại cảnh hiện tại
     }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1f; // Đảm bảo thời gian trở lại bình thường trước khi restart
+        SceneManager.LoadScene("Chapter1"); // Tải lại cảnh hiện tại
+    }
     #endregion
 }
