@@ -1,10 +1,20 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioH : MonoBehaviour
 {
     #region Fields
+    /*    [SerializeField] private AudioSource musicSource;
+    [SerializeField] public AudioSource SFXsource;
+
+    public AudioClip background;
+    public AudioClip death;
+    public AudioClip checkpoint;
+    public AudioClip wallTouch;
+    public AudioClip portalIn;
+    public AudioClip portalOut;*/
+    [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioC audioCommand;
     #endregion
 
@@ -37,6 +47,18 @@ public class AudioH : MonoBehaviour
         float volume = audioCommand.SFXSlider.value;
         audioCommand.mixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("SFXVolume", volume);
+    }
+    #endregion
+
+    #region Die
+    public void PlayDeathSound()
+    {
+        if (deathSound != null)
+        {
+            // Phát âm thanh chết sử dụng SFX nguồn từ audioCommand
+            audioCommand.mixer.SetFloat("SFX", Mathf.Log10(audioCommand.SFXSlider.value) * 20);
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+        }
     }
     #endregion
 
