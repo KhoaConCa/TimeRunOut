@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossStats : MonoBehaviour, ICharacterStats
 {
     #region Fields
+    [SerializeField] private EndGameH endGameHandler;
+
     public int HP = 150000;
     public int ATK = 1;
     #endregion
@@ -16,6 +18,12 @@ public class BossStats : MonoBehaviour, ICharacterStats
         if (actualDamage > 0)
         {
             HP -= actualDamage;
+
+            if (HP <= 0)
+            {
+                HP = 0;
+                endGameHandler.HandleEndGame();
+            }
         }
     }
 
