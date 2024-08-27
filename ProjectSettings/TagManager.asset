@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - Teleport
   - BossGate
+  - Boss
   layers:
   - Default
   - TransparentFX
