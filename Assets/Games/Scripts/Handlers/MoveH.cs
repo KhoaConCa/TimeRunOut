@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
@@ -6,7 +6,9 @@ using UnityEngine;
 public class MoveH : MonoBehaviour
 {
     #region Fields
-    [SerializeField] public MoveD moveData;
+
+    #region PC
+    /*[SerializeField] public MoveD moveData;
     [SerializeField] public Rigidbody2D body;
     [SerializeField] private CapsuleCollider2D groundCheck;
     [SerializeField] public LayerMask groundMask;
@@ -14,28 +16,45 @@ public class MoveH : MonoBehaviour
     [SerializeField] private ShootH shootHandler;
     //[SerializeField] private CameraH cameraHandler;
 
-/*    public CameraV cameraView;
-    public ParticleV particleView;*/
+    /*public CameraV cameraView;
+    public ParticleV particleView;
+    private Vector2 checkPoint;
+
     public bool grounded;
-/*    private Vector2 checkPoint;*/
+    private Vector2 moveInput;*/
+    #endregion
+
+    #region iOS
+    [SerializeField] public MoveD moveData;
+    [SerializeField] public Rigidbody2D body;
+    [SerializeField] private CapsuleCollider2D groundCheck;
+    [SerializeField] public LayerMask groundMask;
+    [SerializeField] private Animator animator;
+    [SerializeField] private ShootH shootHandler;
+
+    public Joystick movementJoystick;
+    public bool grounded;
+    private Vector2 moveInput;
+    #endregion
+
     #endregion
 
     #region Methods
-/*    void Start()
+    /*void Start()
     {
         checkPoint = transform.position;
-    }*/
+    }
 
-/*    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Obstacle"))
         {
             Die();
         }
-    }*/
-/*    void FixedUpdate()
+    }
+    void FixedUpdate()
     {
-        CheckGround(); ;
+        CheckGround();
 
         if (grounded && Mathf.Abs(body.velocity.x) < 0.1)
         {
@@ -50,9 +69,12 @@ public class MoveH : MonoBehaviour
     }
     #endregion
 
-    #region Movements
-    public void Run(float x, float y)
+    #region iOS
+    public void Run()
     {
+        float x = movementJoystick.Horizontal;
+        float y = movementJoystick.Vertical;
+
         FlipCharacter(x);
 
         if (Mathf.Abs(x) > 0)
@@ -88,11 +110,49 @@ public class MoveH : MonoBehaviour
     }
     #endregion
 
- /*   #region Die, Respawn, Check Point
-    private void Die()
+    #region PC
+    /*public void Run(float x, float y)
     {
-*//*        cameraView.PlayRespawnAnimation();
-        particleView.PlayParticle(ParticleV.Particles.die, transform.position);*//*
+        FlipCharacter(x);
+
+        if (Mathf.Abs(x) > 0)
+        {
+            body.velocity = new Vector2(x * moveData.speed, body.velocity.y);
+        }
+
+        if (Mathf.Abs(y) > 0 && grounded)
+        {
+            body.velocity = new Vector2(body.velocity.x, y * moveData.speed);
+        }
+    }
+
+    public void Jump()
+    {
+        if (grounded)
+        {
+            body.velocity = new Vector2(body.velocity.x, moveData.jumpForce);
+            grounded = false;
+        }
+    }
+
+    public void FlipCharacter(float x)
+    {
+        if (x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }*/
+    #endregion
+
+    #region Die, Respawn, Check Point
+    /*private void Die()
+    {
+        cameraView.PlayRespawnAnimation();
+        particleView.PlayParticle(ParticleV.Particles.die, transform.position);
         StartCoroutine(Respawn(0.5f));
     }
 
@@ -111,8 +171,8 @@ public class MoveH : MonoBehaviour
         shootHandler.StopShoot();
         transform.localScale = new Vector3(1, 1, 1);
         body.simulated = true;
-    }
-    #endregion*/
+    }*/
+    #endregion
 
     #endregion
 }

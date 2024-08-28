@@ -384,6 +384,8 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 185652424}
   pauseHandler: {fileID: 185652429}
   shootHandler: {fileID: 0}
+  moveJoystick: {fileID: 0}
+  shootJoystick: {fileID: 0}
 --- !u!1 &196465173
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,8 +847,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -86}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: 0, y: -104}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636368339
 MonoBehaviour:
@@ -1110,7 +1112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
+  m_AnchoredPosition: {x: 0, y: -187}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1141359278
@@ -4241,7 +4243,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -25739034087682050, guid: 643fd422d9f8a7a4a9c17e49219d5679, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6283d1a0516339046a3b4f076cd293a0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0d910a394cacfbb4fa73d0471dd40b5c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

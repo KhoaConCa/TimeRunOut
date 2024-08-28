@@ -6,6 +6,12 @@ public class PauseC : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private PauseH pauseHandler;
     [SerializeField] private ShootH shootHandler;
+
+    #region iOS
+    [SerializeField] private GameObject moveJoystick;
+    [SerializeField] private GameObject shootJoystick;
+    #endregion
+
     #endregion
 
     #region Methods
@@ -36,11 +42,16 @@ public class PauseC : MonoBehaviour
     public void ShowPauseMenu()
     {
         pauseMenuUI.SetActive(true);
+        moveJoystick.SetActive(false);
+        shootJoystick.SetActive(false);
+
     }
 
     public void HidePauseMenu()
     {
         pauseMenuUI.SetActive(false);
+        moveJoystick.SetActive(true);
+        shootJoystick.SetActive(true);
     }
     #endregion
 }
