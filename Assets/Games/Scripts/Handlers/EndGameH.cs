@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class EndGameH : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private EndGameC endGameCommand;
+    #endregion
 
+    #region Methods
     public void HandleEndGame()
     {
         if (endGameCommand != null)
@@ -13,4 +16,5 @@ public class EndGameH : MonoBehaviour
             endGameCommand.ShowEndGamePanel();
         }
     }
+    #endregion
 }

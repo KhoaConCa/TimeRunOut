@@ -3,7 +3,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class MoveH : MonoBehaviour
+public class MoveH : MonoBehaviour, IMoveHandler
 {
     #region Fields
 
@@ -29,10 +29,10 @@ public class MoveH : MonoBehaviour
     [SerializeField] public Rigidbody2D body;
     [SerializeField] private CapsuleCollider2D groundCheck;
     [SerializeField] public LayerMask groundMask;
-    [SerializeField] private Animator animator;
-    [SerializeField] private ShootH shootHandler;
+    //[SerializeField] private Animator animator;
+    //[SerializeField] private ShootH shootHandler;
+    [SerializeField] public Joystick movementJoystick;
 
-    public Joystick movementJoystick;
     public bool grounded;
     private Vector2 moveInput;
     #endregion
@@ -97,7 +97,22 @@ public class MoveH : MonoBehaviour
         }
     }
 
-    public void FlipCharacter(float x)
+    public bool IsGrounded()
+    {
+        return grounded;
+    }
+
+    public Vector2 GetVelocity()
+    {
+        return body.velocity;
+    }
+
+    public void ApplyDrag()
+    {
+        body.velocity *= moveData.drag;
+    }
+
+    private void FlipCharacter(float x)
     {
         if (x > 0)
         {

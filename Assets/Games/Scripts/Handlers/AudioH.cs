@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
-public class AudioH : MonoBehaviour
+public class AudioH : MonoBehaviour, IAudioHandler
 {
     #region Fields
     /*    [SerializeField] private AudioSource musicSource;
@@ -14,8 +16,12 @@ public class AudioH : MonoBehaviour
     public AudioClip wallTouch;
     public AudioClip portalIn;
     public AudioClip portalOut;*/
-    [SerializeField] private AudioClip deathSound;
-    [SerializeField] private AudioC audioCommand;
+    private AudioMixer mixer;
+    private Slider musicSlider;
+    private Slider SFXSlider;
+    private AudioClip deathSound;
+    //[SerializeField] private AudioClip deathSound;
+    //[SerializeField] private AudioC audioCommand;
     #endregion
 
     #region Methods
@@ -23,29 +29,37 @@ public class AudioH : MonoBehaviour
         {
             audioCommand.SFXsource.PlayOneShot(clip);
         }*/
-    #region Music
-    public void SetMusicVolume()
+
+    #region Constructor
+    public AudioH(AudioMixer mixer, Slider musicSlider, Slider SFXSlider)
     {
-        float volume = audioCommand.musicSlider.value;
-        audioCommand.mixer.SetFloat("music", Mathf.Log10(volume) * 20);
+        this.mixer = mixer;
+        this.musicSlider = musicSlider;
+        this.SFXSlider = SFXSlider;
+    }
+    #endregion
+
+    #region Music
+    public void SetMusicVolume(float volume)
+    {
+        mixer.SetFloat("music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
 
     public void LoadVolume()
     {
-        audioCommand.musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        audioCommand.SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 
-        SetMusicVolume();
-        SetSFXVolume();
+        SetMusicVolume(musicSlider.value);
+        SetSFXVolume(SFXSlider.value);
     }
     #endregion
 
     #region SFX
-    public void SetSFXVolume()
+    public void SetSFXVolume(float volume)
     {
-        float volume = audioCommand.SFXSlider.value;
-        audioCommand.mixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+        mixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("SFXVolume", volume);
     }
     #endregion
@@ -55,9 +69,7 @@ public class AudioH : MonoBehaviour
     {
         if (deathSound != null)
         {
-            // Phát âm thanh chết sử dụng SFX nguồn từ audioCommand
-            audioCommand.mixer.SetFloat("SFX", Mathf.Log10(audioCommand.SFXSlider.value) * 20);
-            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            AudioSource.PlayClipAtPoint(deathSound, Vector3.zero);
         }
     }
     #endregion

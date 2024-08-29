@@ -14,7 +14,7 @@ public class MoveV : MonoBehaviour
         float xInput = Input.GetAxis("Horizontal");
         float runSpeed = Mathf.Abs(xInput) * moveData.speed;
 
-        if (moveHandler.grounded)
+        if (moveHandler.IsGrounded())
         {
             animator.SetFloat("RunSpeed", runSpeed);
         }

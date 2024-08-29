@@ -21,16 +21,15 @@ public class MoveC : MonoBehaviour
     {
         moveHandler.Run();
     }
+
     void FixedUpdate()
     {
         moveHandler.CheckGround();
 
         if (moveHandler.grounded && Mathf.Abs(moveHandler.body.velocity.x) < 0.1f)
         {
-            moveHandler.body.velocity *= moveHandler.moveData.drag;
+            moveHandler.ApplyDrag();
         }
-
-        moveHandler.Run();
     }
     #endregion
 
