@@ -8,7 +8,7 @@ public class AudioC : MonoBehaviour
     [SerializeField] public AudioMixer mixer;
     [SerializeField] public Slider musicSlider;
     [SerializeField] public Slider SFXSlider;
-    private IAudioHandler audioHandler;
+    [SerializeField] public AudioH audioHandler;
     #endregion
 
     #region Methods
@@ -16,16 +16,14 @@ public class AudioC : MonoBehaviour
     {
         /*musicSource.clip = background;
         musicSource.Play();*/
-        audioHandler = new AudioH(mixer, musicSlider, SFXSlider);
-
         if (PlayerPrefs.HasKey("musicVolume"))
         {
             audioHandler.LoadVolume();
         }
         else
         {
-            audioHandler.SetMusicVolume(musicSlider.value);
-            audioHandler.SetSFXVolume(SFXSlider.value);
+            audioHandler.SetMusicVolume();
+            audioHandler.SetSFXVolume();
         }
     }
     #endregion

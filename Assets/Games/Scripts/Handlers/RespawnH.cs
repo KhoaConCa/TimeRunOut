@@ -8,10 +8,11 @@ public class RespawnH : MonoBehaviour
     [SerializeField] private ShootH shootHandler;
     [SerializeField] private MoveH moveHandler;
     [SerializeField] private Rigidbody2D body;
+    [SerializeField] private AudioH audioHandler;
     //[SerializeField] private CameraH cameraHandler;
 
-/*    public CameraV cameraView;
-    public ParticleV particleView;*/
+    /*    public CameraV cameraView;
+        public ParticleV particleView;*/
     private Vector2 checkPoint;
     #endregion
 
@@ -28,6 +29,7 @@ public class RespawnH : MonoBehaviour
 /*        cameraView.PlayRespawnAnimation();
         particleView.PlayParticle(ParticleV.Particles.die, transform.position);*/
         StartCoroutine(Respawn(0.5f));
+        audioHandler.PlayDeathSound();
     }
 
     public void UpdateCheckPoint(Vector2 position)
