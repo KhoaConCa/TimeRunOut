@@ -8807,7 +8807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endGameHandler: {fileID: 972401842}
-  HP: 100000
+  HP: 50000
   ATK: 1
 --- !u!212 &972401836
 SpriteRenderer:
