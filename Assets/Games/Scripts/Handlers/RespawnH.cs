@@ -29,7 +29,7 @@ public class RespawnH : MonoBehaviour
 /*        cameraView.PlayRespawnAnimation();
         particleView.PlayParticle(ParticleV.Particles.die, transform.position);*/
         StartCoroutine(Respawn(0.5f));
-        audioHandler.PlayDeathSound();
+        //audioHandler.PlayDeathSound();
     }
 
     public void UpdateCheckPoint(Vector2 position)
